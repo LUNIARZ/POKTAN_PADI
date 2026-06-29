@@ -1,0 +1,553 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --lebar-dashboard: 440px;
+    --hijau-utama: #0c963d;
+    --hijau-tua: #08752d;
+    --teks-utama: #07152f;
+    --teks-abu: #686868;
+}
+
+body {
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #eef3ef;
+    color: var(--teks-utama);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    border: 0;
+}
+
+img,
+svg {
+    display: block;
+}
+
+.halaman-profile {
+    width: 100%;
+    max-width: var(--lebar-dashboard);
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.input-foto-profile {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.kepala-profile {
+    height: 96px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 28px 25px 16px;
+    background: #ffffff;
+}
+
+.kepala-profile h1 {
+    color: #05070a;
+    font-size: 32px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: 0;
+}
+
+.tombol-edit-profile {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 16px;
+    color: #0b8532;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(7, 21, 47, 0.12);
+    cursor: pointer;
+}
+
+.tombol-edit-profile svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+}
+
+.konten-profile {
+    position: absolute;
+    top: 96px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 20px calc(96px + env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-content: start;
+}
+
+.konten-profile::-webkit-scrollbar {
+    display: none;
+}
+
+.kartu-identitas {
+    min-height: 132px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(31, 143, 62, 0.14);
+    border-radius: 22px;
+    background: #eaf9e5;
+    box-shadow: 0 10px 24px rgba(7, 21, 47, 0.14);
+}
+
+.gambar-bg-identitas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+}
+
+.lapisan-identitas {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, rgba(234, 250, 229, 0.96) 0%, rgba(234, 250, 229, 0.84) 42%, rgba(234, 250, 229, 0.28) 74%, rgba(234, 250, 229, 0.04) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(0, 0, 0, 0.05));
+}
+
+.isi-identitas {
+    position: relative;
+    z-index: 1;
+    min-height: 132px;
+    display: grid;
+    grid-template-columns: 78px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    padding: 15px;
+}
+
+.foto-profile {
+    width: 78px;
+    height: 78px;
+    position: relative;
+    display: block;
+    flex: 0 0 auto;
+    border: 4px solid #ffffff;
+    border-radius: 50%;
+    background: #e6f7e4;
+    box-shadow: 0 10px 26px rgba(7, 21, 47, 0.16);
+    cursor: pointer;
+}
+
+.foto-profile img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+    object-position: center;
+}
+
+.status-terverifikasi {
+    position: absolute;
+    right: -4px;
+    bottom: 4px;
+    width: 29px;
+    height: 29px;
+    display: grid;
+    place-items: center;
+    border: 4px solid #ffffff;
+    border-radius: 50%;
+    color: #ffffff;
+    background: #20a64a;
+}
+
+.status-terverifikasi svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+
+.teks-identitas {
+    min-width: 0;
+    display: grid;
+    gap: 7px;
+}
+
+.teks-identitas h2 {
+    color: #05070a;
+    font-size: 20px;
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: 0;
+}
+
+.teks-identitas p {
+    color: #4d4d4d;
+    font-size: 14.5px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.lokasi-profile {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 19px minmax(0, 1fr);
+    align-items: start;
+    gap: 7px;
+    color: #3d3d3d;
+    font-size: 12.5px;
+    line-height: 1.35;
+    font-weight: 800;
+}
+
+.lokasi-profile svg {
+    width: 19px;
+    height: 19px;
+    flex: 0 0 auto;
+    color: #088b2d;
+    fill: currentColor;
+}
+
+.lokasi-profile span {
+    display: block;
+    padding-top: 2px;
+}
+
+.status-foto-profile {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.menu-profile {
+    overflow: hidden;
+    border: 1px solid #eeeeee;
+    border-radius: 19px;
+    background: #ffffff;
+    box-shadow: 0 9px 24px rgba(7, 21, 47, 0.1);
+}
+
+.item-menu-profile {
+    min-width: 0;
+    min-height: 64px;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) 22px;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 16px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.item-menu-profile:last-child {
+    border-bottom: 0;
+}
+
+.ikon-menu-profile {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 13px;
+}
+
+.ikon-menu-profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ikon-menu-profile svg {
+    width: 29px;
+    height: 29px;
+    stroke: currentColor;
+}
+
+.ikon-menu-profile.hijau-penuh {
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+}
+
+.ikon-menu-profile.hijau-penuh img {
+    padding: 6px;
+    object-fit: contain;
+}
+
+.ikon-menu-profile.ungu-muda {
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+}
+
+.ikon-menu-profile.ungu-muda img,
+.ikon-menu-profile.abu img {
+    padding: 2px;
+    object-fit: contain;
+}
+
+.ikon-menu-profile.abu {
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+}
+
+.ikon-menu-profile.ikon-whatsapp {
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+}
+
+.ikon-menu-profile.ikon-whatsapp img {
+    padding: 5px;
+    object-fit: contain;
+}
+
+.item-menu-whatsapp:hover,
+.item-menu-whatsapp:focus-visible {
+    background: #f3fff6;
+}
+
+.item-menu-whatsapp:focus-visible {
+    outline: 3px solid rgba(37, 211, 102, 0.25);
+    outline-offset: -3px;
+}
+
+.teks-menu-profile {
+    min-width: 0;
+    display: grid;
+    gap: 3px;
+}
+
+.teks-menu-profile strong {
+    color: #0b0b0b;
+    font-size: 16px;
+    line-height: 1.15;
+    font-weight: 900;
+    letter-spacing: 0;
+}
+
+.teks-menu-profile small {
+    color: #707070;
+    font-size: 12.5px;
+    line-height: 1.25;
+    font-weight: 800;
+}
+
+.panah-menu {
+    width: 22px;
+    height: 22px;
+    color: #6b6b6b;
+    stroke: currentColor;
+}
+
+.tombol-keluar {
+    width: 100%;
+    min-height: 52px;
+    margin-top: auto;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1.8px solid #ff1f1f;
+    border-radius: 17px;
+    color: #ff1f1f;
+    background: #ffffff;
+    font-size: 17px;
+    line-height: 1;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.tombol-keluar svg {
+    width: 27px;
+    height: 27px;
+    stroke: currentColor;
+}
+
+@media (max-width: 390px) {
+    .kepala-profile {
+        height: 92px;
+        padding: 27px 18px 14px;
+    }
+
+    .kepala-profile h1 {
+        font-size: 30px;
+    }
+
+    .tombol-edit-profile {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+    }
+
+    .konten-profile {
+        top: 92px;
+        padding-right: 15px;
+        padding-bottom: calc(96px + env(safe-area-inset-bottom));
+        padding-left: 15px;
+        gap: 12px;
+    }
+
+    .kartu-identitas,
+    .isi-identitas {
+        min-height: 128px;
+    }
+
+    .isi-identitas {
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 11px;
+        padding: 14px;
+    }
+
+    .foto-profile {
+        width: 72px;
+        height: 72px;
+    }
+
+    .status-terverifikasi {
+        width: 29px;
+        height: 29px;
+        border-width: 3px;
+    }
+
+    .teks-identitas h2 {
+        font-size: 18px;
+    }
+
+    .teks-identitas p {
+        font-size: 13.5px;
+    }
+
+    .lokasi-profile {
+        grid-template-columns: 18px minmax(0, 1fr);
+        gap: 6px;
+        font-size: 11.8px;
+    }
+
+    .lokasi-profile svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .item-menu-profile {
+        grid-template-columns: 38px minmax(0, 1fr) 20px;
+        min-height: 60px;
+        gap: 10px;
+        padding: 8px 13px;
+    }
+
+    .ikon-menu-profile {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+    }
+
+    .teks-menu-profile strong {
+        font-size: 15.5px;
+    }
+
+    .teks-menu-profile small {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 340px) {
+    .kepala-profile h1 {
+        font-size: 28px;
+    }
+
+    .konten-profile {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .isi-identitas {
+        grid-template-columns: 66px minmax(0, 1fr);
+        gap: 9px;
+        padding: 12px;
+    }
+
+    .foto-profile {
+        width: 66px;
+        height: 66px;
+    }
+
+    .teks-identitas h2 {
+        font-size: 16px;
+    }
+
+    .teks-identitas p {
+        font-size: 12.5px;
+    }
+
+    .lokasi-profile {
+        font-size: 10.5px;
+    }
+
+    .item-menu-profile {
+        grid-template-columns: 36px minmax(0, 1fr) 20px;
+        min-height: 58px;
+        gap: 8px;
+        padding-top: 8px;
+        padding-right: 11px;
+        padding-bottom: 8px;
+        padding-left: 11px;
+    }
+
+    .ikon-menu-profile {
+        width: 36px;
+        height: 36px;
+    }
+
+    .teks-menu-profile strong {
+        font-size: 14px;
+    }
+
+    .teks-menu-profile small {
+        font-size: 11.5px;
+    }
+
+    .tombol-keluar {
+        min-height: 52px;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 18px;
+    }
+
+    .halaman-profile {
+        height: calc(100dvh - 18px);
+        border-radius: 28px;
+        box-shadow: 0 20px 60px rgba(7, 21, 47, 0.18);
+    }
+}

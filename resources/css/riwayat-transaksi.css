@@ -1,0 +1,600 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #eef3ef;
+    color: #07152f;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    border: 0;
+    font: inherit;
+}
+
+img,
+svg {
+    display: block;
+}
+
+.halaman-riwayat-transaksi {
+    width: 100%;
+    max-width: 440px;
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.kepala-halaman {
+    height: 96px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr) 52px;
+    align-items: center;
+    column-gap: 10px;
+    padding: 26px 14px 12px;
+    background: #ffffff;
+}
+
+.judul-halaman {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #07152f;
+    text-align: center;
+    font-size: 24px;
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: 0;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.ruang-kanan {
+    width: 52px;
+    height: 52px;
+    grid-column: 3;
+}
+
+.tombol-bulat {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #07152f;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.tombol-bulat svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+}
+
+.konten-riwayat-transaksi {
+    position: absolute;
+    top: 96px;
+    right: 0;
+    bottom: 76px;
+    left: 0;
+    overflow-y: auto;
+    padding: 0 14px 22px;
+}
+
+.konten-riwayat-transaksi::-webkit-scrollbar {
+    display: none;
+}
+
+.kartu-ringkasan-riwayat {
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid #e8f1e7;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #f3fff1, #ffffff 64%);
+    box-shadow: 0 10px 26px rgba(7, 21, 47, 0.08);
+}
+
+.ikon-ringkasan-riwayat {
+    width: 62px;
+    height: 62px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid #ebedf4;
+    border-radius: 18px;
+    background: #ffffff;
+}
+
+.ikon-ringkasan-riwayat img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+}
+
+.kartu-ringkasan-riwayat p {
+    margin-bottom: 4px;
+    color: #667166;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.kartu-ringkasan-riwayat strong {
+    display: block;
+    color: #07152f;
+    font-size: 22px;
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+.kartu-ringkasan-riwayat small {
+    display: block;
+    margin-top: 5px;
+    color: #0c963d;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.filter-riwayat {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 16px 0 12px;
+    scrollbar-width: none;
+}
+
+.filter-riwayat::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-riwayat button {
+    flex: 0 0 auto;
+    min-height: 36px;
+    padding: 0 14px;
+    border: 1px solid #e5e9e3;
+    border-radius: 999px;
+    color: #59635b;
+    background: #ffffff;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 900;
+    box-shadow: 0 4px 12px rgba(7, 21, 47, 0.05);
+    cursor: pointer;
+}
+
+.filter-riwayat button.aktif {
+    border-color: #0c963d;
+    color: #ffffff;
+    background: #0c963d;
+}
+
+.filter-riwayat button[data-filter-belanja="menunggu"].aktif {
+    border-color: #d99300;
+    background: #d99300;
+}
+
+.filter-riwayat button[data-filter-belanja="ditolak"].aktif,
+.filter-riwayat button[data-filter-belanja="dibatalkan"].aktif {
+    border-color: #d92d20;
+    background: #d92d20;
+}
+
+.filter-riwayat button[data-filter-riwayat="marketplace"].aktif {
+    border-color: #0c963d;
+    background: #0c963d;
+}
+
+.filter-riwayat button[data-filter-riwayat="pupuk"].aktif {
+    border-color: #6d4bd1;
+    background: #6d4bd1;
+}
+
+.daftar-riwayat-transaksi {
+    display: grid;
+    gap: 12px;
+}
+
+.status-riwayat-belanja {
+    margin: 0 0 12px;
+    padding: 10px 12px;
+    border: 1px solid #b9dfbe;
+    border-radius: 8px;
+    color: #08752d;
+    background: #effbef;
+    font-size: 12.5px;
+    line-height: 1.35;
+    font-weight: 800;
+}
+
+.status-riwayat-belanja.error {
+    border-color: #f0c8c8;
+    color: #9f1d1d;
+    background: #fff5f5;
+}
+
+.kartu-transaksi {
+    display: grid;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #edf0eb;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(7, 21, 47, 0.07);
+}
+
+.kartu-belanja {
+    position: relative;
+    overflow: hidden;
+    padding-left: 17px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.kartu-riwayat-petani {
+    position: relative;
+    overflow: hidden;
+    padding-left: 17px;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.kartu-riwayat-petani::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: #e0a000;
+}
+
+.kartu-riwayat-petani.status-kartu-diterima::before,
+.kartu-riwayat-petani.status-kartu-disetujui::before,
+.kartu-riwayat-petani.status-kartu-selesai::before {
+    background: #0c963d;
+}
+
+.kartu-riwayat-petani.status-kartu-ditolak::before,
+.kartu-riwayat-petani.status-kartu-dibatalkan::before {
+    background: #d92d20;
+}
+
+.kartu-belanja::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: #e0a000;
+}
+
+.kartu-belanja.status-kartu-disetujui::before,
+.kartu-belanja.status-kartu-selesai::before {
+    background: #0c963d;
+}
+
+.kartu-belanja.status-kartu-ditolak::before,
+.kartu-belanja.status-kartu-dibatalkan::before {
+    background: #d92d20;
+}
+
+.kartu-belanja:hover,
+.kartu-riwayat-petani:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 11px 26px rgba(7, 21, 47, 0.1);
+}
+
+.kepala-transaksi {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.label-transaksi {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 0 9px;
+    border-radius: 999px;
+    color: #0b7f35;
+    background: #e9f9ee;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.label-transaksi.label-pupuk {
+    color: #5b38bd;
+    background: #eee9ff;
+}
+
+.tanggal-transaksi {
+    color: #7a827b;
+    font-size: 11.5px;
+    line-height: 1.25;
+    font-weight: 800;
+    text-align: right;
+}
+
+.judul-transaksi {
+    color: #07152f;
+    font-size: 17px;
+    line-height: 1.18;
+    font-weight: 900;
+}
+
+.detail-transaksi {
+    color: #5c665d;
+    font-size: 12.5px;
+    line-height: 1.4;
+    font-weight: 800;
+}
+
+.detail-transaksi span {
+    margin: 0 4px;
+    color: #a0a7a1;
+}
+
+.catatan-transaksi {
+    margin: 6px 0 0;
+    padding-left: 9px;
+    border-left: 3px solid #9fd3a4;
+    color: #3f5f46;
+    font-size: 12px;
+    line-height: 1.45;
+    font-weight: 700;
+}
+
+.kaki-transaksi {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-top: 11px;
+    border-top: 1px solid #edf0eb;
+}
+
+.aksi-belanja {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tombol-batalkan-pesanan {
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid #e5a2a2;
+    border-radius: 8px;
+    color: #ae2727;
+    background: #ffffff;
+    font-size: 12px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.tombol-batalkan-pesanan:hover:not(:disabled) {
+    background: #fff1f1;
+}
+
+.tombol-batalkan-pesanan:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
+.rincian-pembayaran {
+    min-width: 0;
+    display: grid;
+    gap: 7px;
+}
+
+.metode-transaksi {
+    color: #59635b;
+    font-size: 12px;
+    line-height: 1.25;
+    font-weight: 900;
+}
+
+.nilai-transaksi {
+    flex: 0 0 auto;
+    display: grid;
+    gap: 4px;
+    text-align: right;
+}
+
+.nilai-transaksi > span {
+    color: #7a827b;
+    font-size: 10.5px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.total-transaksi {
+    color: #07152f;
+    font-size: 16px;
+    line-height: 1.15;
+    font-weight: 900;
+    text-align: right;
+}
+
+.status-transaksi {
+    width: fit-content;
+    min-height: 26px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 900;
+    gap: 6px;
+}
+
+.status-transaksi i {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.status-menunggu {
+    color: #8a5a00;
+    background: #fff3c4;
+}
+
+.status-disetujui {
+    color: #08752d;
+    background: #dff6e7;
+}
+
+.status-diterima {
+    color: #075f27;
+    background: #d9f5e2;
+}
+
+.status-selesai {
+    color: #ffffff;
+    background: #0c963d;
+}
+
+.status-ditolak {
+    color: #b42318;
+    background: #ffe3df;
+}
+
+.status-dibatalkan {
+    color: #7f1d1d;
+    background: #fee2e2;
+}
+
+.riwayat-kosong {
+    min-height: 190px;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    border: 1px dashed #dce5da;
+    border-radius: 20px;
+    background: #fbfdfb;
+    text-align: center;
+}
+
+.riwayat-kosong h2 {
+    margin-bottom: 6px;
+    color: #07152f;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.riwayat-kosong p {
+    color: #687268;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 800;
+}
+
+@media (max-width: 390px) {
+    .kepala-halaman {
+        height: 90px;
+        grid-template-columns: 48px minmax(0, 1fr) 48px;
+        column-gap: 8px;
+        padding: 24px 12px 10px;
+    }
+
+    .judul-halaman {
+        font-size: 20px;
+    }
+
+    .ruang-kanan,
+    .tombol-bulat {
+        width: 48px;
+        height: 48px;
+    }
+
+    .tombol-bulat svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .konten-riwayat-transaksi {
+        top: 90px;
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .kartu-ringkasan-riwayat {
+        grid-template-columns: 56px minmax(0, 1fr);
+        padding: 14px;
+    }
+
+    .ikon-ringkasan-riwayat {
+        width: 56px;
+        height: 56px;
+    }
+
+    .kaki-transaksi {
+        align-items: flex-end;
+    }
+
+    .total-transaksi {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 340px) {
+    .kepala-halaman {
+        grid-template-columns: 40px minmax(0, 1fr) 40px;
+        column-gap: 6px;
+    }
+
+    .judul-halaman {
+        font-size: 18px;
+    }
+
+    .ruang-kanan,
+    .tombol-bulat {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tombol-bulat svg {
+        width: 23px;
+        height: 23px;
+    }
+
+    .kartu-ringkasan-riwayat strong {
+        font-size: 19px;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 18px;
+    }
+
+    .halaman-riwayat-transaksi {
+        height: calc(100dvh - 18px);
+        border-radius: 28px;
+        box-shadow: 0 20px 60px rgba(7, 21, 47, 0.18);
+    }
+}

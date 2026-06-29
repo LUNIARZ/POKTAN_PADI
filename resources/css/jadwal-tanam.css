@@ -1,0 +1,577 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #f3f5f4;
+    color: #07152f;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    border: 0;
+    font: inherit;
+}
+
+img,
+svg {
+    display: block;
+}
+
+.halaman-jadwal {
+    width: 100%;
+    max-width: 440px;
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.kepala-halaman {
+    height: 96px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr) 52px;
+    align-items: center;
+    column-gap: 10px;
+    padding: 26px 14px 12px;
+    background: #ffffff;
+}
+
+.judul-halaman {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #07152f;
+    text-align: center;
+    font-size: 27px;
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: 0;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.ruang-kanan {
+    width: 52px;
+    height: 52px;
+    grid-column: 3;
+}
+
+.tombol-bulat {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #07152f;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.tombol-bulat svg {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+}
+
+.konten-jadwal {
+    position: absolute;
+    top: 96px;
+    right: 0;
+    bottom: 76px;
+    left: 0;
+    overflow-y: auto;
+    padding: 0 14px 22px;
+}
+
+.konten-jadwal::-webkit-scrollbar {
+    display: none;
+}
+
+.banner-jadwal {
+    min-height: 212px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 14px;
+    border-radius: 24px;
+    background: #eaf8df;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.banner-jadwal img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+}
+
+.banner-jadwal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(234, 248, 223, 0.94) 0%, rgba(234, 248, 223, 0.82) 44%, rgba(234, 248, 223, 0.22) 100%);
+}
+
+.isi-banner {
+    position: relative;
+    z-index: 1;
+    width: min(72%, 286px);
+    padding: 20px 18px 22px;
+}
+
+.isi-banner span {
+    display: inline-flex;
+    margin-bottom: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: #007b2f;
+    background: #ffffff;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.isi-banner h2 {
+    margin-bottom: 8px;
+    color: #07152f;
+    font-size: 28px;
+    line-height: 1.08;
+    font-weight: 900;
+}
+
+.isi-banner p {
+    color: #3f4d5a;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 700;
+}
+
+.kartu-kalender {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 15px;
+    border: 1px solid #edf0ec;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.kartu-kalender label {
+    display: grid;
+    gap: 8px;
+}
+
+.kartu-kalender span {
+    color: #6f7782;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.kartu-kalender strong {
+    color: #07152f;
+    font-size: 17px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.kartu-kalender input {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #e2e8e0;
+    border-radius: 13px;
+    color: #07152f;
+    background: #ffffff;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 900;
+    outline: none;
+}
+
+.kartu-kalender p {
+    color: #555555;
+    font-size: 12.5px;
+    line-height: 1.45;
+    font-weight: 800;
+}
+
+.tombol-mulai-jadwal {
+    width: 100%;
+    min-height: 46px;
+    border-radius: 14px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #00a841, #008c2d);
+    box-shadow: 0 8px 18px rgba(0, 150, 56, 0.22);
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.tombol-mulai-jadwal:hover {
+    filter: brightness(0.97);
+}
+
+.tombol-mulai-jadwal:focus-visible {
+    outline: 3px solid rgba(0, 150, 56, 0.22);
+    outline-offset: 2px;
+}
+
+.tombol-mulai-jadwal[hidden] {
+    display: none;
+}
+
+.kartu-progress {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 14px;
+    padding: 15px;
+    border: 1px solid #edf0ec;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.kepala-progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.kepala-progress span {
+    display: block;
+    margin-bottom: 4px;
+    color: #6f7782;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.kepala-progress strong {
+    color: #07152f;
+    font-size: 17px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.tombol-reset {
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 999px;
+    color: #009638;
+    background: #eef9ea;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 900;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.jalur-progress {
+    width: 100%;
+    height: 9px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e7ece5;
+}
+
+.jalur-progress span {
+    display: block;
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #00a841, #008c2d);
+    transition: width 0.25s ease;
+}
+
+.daftar-proses {
+    display: grid;
+    gap: 12px;
+}
+
+.kartu-proses {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid #eeeeee;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.kartu-proses.aktif {
+    border-color: #b9e5b5;
+    background: #f7fff4;
+}
+
+.kartu-proses.selesai {
+    background: #ffffff;
+}
+
+.kartu-proses.menunggu {
+    opacity: 0.72;
+}
+
+.nomor-proses {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    color: #6b7280;
+    background: #f0f2f1;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.kartu-proses.aktif .nomor-proses {
+    color: #ffffff;
+    background: #009638;
+}
+
+.kartu-proses.selesai .nomor-proses {
+    color: #009638;
+    background: #e8f8e4;
+}
+
+.isi-proses {
+    min-width: 0;
+    display: grid;
+    gap: 9px;
+}
+
+.baris-proses {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.baris-proses h2 {
+    color: #07152f;
+    font-size: 17px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.label-status {
+    padding: 5px 8px;
+    border-radius: 999px;
+    color: #6f7782;
+    background: #f0f2f1;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.label-status.aktif {
+    color: #007b2f;
+    background: #e8f8e4;
+}
+
+.label-status.selesai {
+    color: #15803d;
+    background: #e8f8e4;
+}
+
+.meta-proses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.meta-proses span {
+    width: fit-content;
+    padding: 6px 8px;
+    border-radius: 999px;
+    color: #315a3e;
+    background: #edf8e9;
+    font-size: 10.5px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.catatan-proses {
+    display: block;
+    color: #07152f;
+    font-size: 13px;
+    line-height: 1.35;
+    font-weight: 900;
+}
+
+.isi-proses p {
+    color: #555555;
+    font-size: 12.5px;
+    line-height: 1.45;
+    font-weight: 700;
+}
+
+.detail-proses {
+    display: grid;
+    gap: 6px;
+    padding-left: 18px;
+}
+
+.detail-proses li {
+    color: #555555;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.tombol-selesai {
+    width: fit-content;
+    min-height: 36px;
+    padding: 0 16px;
+    border-radius: 12px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #009f3a, #008d2c);
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.peringatan-proses {
+    display: grid;
+    gap: 3px;
+    width: 100%;
+    color: #795500;
+    background: #fff7db;
+    border: 1px solid #f4d675;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 11.5px;
+    line-height: 1.35;
+}
+
+.peringatan-proses strong {
+    color: #6b4800;
+    font-weight: 900;
+}
+
+.peringatan-proses span {
+    font-weight: 800;
+}
+
+.teks-selesai {
+    color: #15803d;
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+@media (max-width: 390px) {
+    .kepala-halaman {
+        height: 90px;
+        grid-template-columns: 48px minmax(0, 1fr) 48px;
+        column-gap: 8px;
+        padding: 24px 12px 10px;
+    }
+
+    .judul-halaman {
+        font-size: 23px;
+    }
+
+    .ruang-kanan,
+    .tombol-bulat {
+        width: 48px;
+        height: 48px;
+    }
+
+    .tombol-bulat svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .konten-jadwal {
+        top: 90px;
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .banner-jadwal {
+        min-height: 194px;
+        border-radius: 22px;
+    }
+
+    .isi-banner {
+        width: min(76%, 278px);
+        padding: 18px 16px 20px;
+    }
+
+    .isi-banner h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 340px) {
+    .kepala-halaman {
+        grid-template-columns: 40px minmax(0, 1fr) 40px;
+        column-gap: 6px;
+    }
+
+    .judul-halaman {
+        font-size: 19px;
+    }
+
+    .ruang-kanan,
+    .tombol-bulat {
+        width: 40px;
+        height: 40px;
+    }
+
+    .tombol-bulat svg {
+        width: 23px;
+        height: 23px;
+    }
+
+    .banner-jadwal {
+        min-height: 178px;
+    }
+
+    .isi-banner h2 {
+        font-size: 21px;
+    }
+
+    .baris-proses {
+        display: grid;
+        gap: 7px;
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        background: #e8eee9;
+        padding-top: 18px;
+    }
+
+    .halaman-jadwal {
+        height: calc(100dvh - 18px);
+        border-radius: 28px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+    }
+}

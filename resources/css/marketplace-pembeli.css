@@ -1,0 +1,814 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --lebar-dashboard: 440px;
+    --hijau: #0c963d;
+    --hijau-tua: #08752d;
+    --teks: #07152f;
+    --abu: #626262;
+}
+
+body {
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #eef3ef;
+    color: var(--teks);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    border: 0;
+}
+
+img,
+svg {
+    display: block;
+}
+
+.halaman-marketplace-pembeli {
+    width: 100%;
+    max-width: var(--lebar-dashboard);
+    height: 100dvh;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.kepala-pembeli {
+    height: 104px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 26px 18px 14px;
+    background: #ffffff;
+}
+
+.kepala-pembeli p {
+    margin-bottom: 5px;
+    color: var(--abu);
+    font-size: 12px;
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.kepala-pembeli h1 {
+    color: #05070a;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: 0;
+}
+
+.tombol-notifikasi {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    border-radius: 16px;
+    color: var(--teks);
+    background: #ffffff;
+    box-shadow: 0 8px 22px rgba(7, 21, 47, 0.12);
+}
+
+.tombol-notifikasi svg {
+    width: 27px;
+    height: 27px;
+    stroke: currentColor;
+}
+
+.konten-marketplace-pembeli {
+    position: absolute;
+    top: 104px;
+    right: 0;
+    bottom: 76px;
+    left: 0;
+    overflow-y: auto;
+    padding: 0 14px 22px;
+}
+
+.konten-marketplace-pembeli::-webkit-scrollbar {
+    display: none;
+}
+
+.pencarian-produk {
+    min-height: 48px;
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    border: 1px solid #e8eee7;
+    border-radius: 16px;
+    background: #f8fbf8;
+}
+
+.pencarian-produk svg {
+    width: 22px;
+    height: 22px;
+    color: #6e786f;
+    stroke: currentColor;
+}
+
+.pencarian-produk input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    color: var(--teks);
+    background: transparent;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.pencarian-produk input::placeholder {
+    color: #8a8a8a;
+    opacity: 1;
+}
+
+.pencarian-produk input:disabled {
+    color: #8a8a8a;
+    cursor: not-allowed;
+}
+
+.ringkasan-pasar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 16px 2px 12px;
+}
+
+.ringkasan-pasar strong {
+    color: var(--teks);
+    font-size: 18px;
+    line-height: 1.15;
+    font-weight: 900;
+}
+
+.ringkasan-pasar span {
+    color: var(--abu);
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.daftar-produk-pembeli {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.kartu-produk-pembeli {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #eeeeee;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 8px 20px rgba(7, 21, 47, 0.08);
+}
+
+.gambar-produk-pembeli {
+    width: 100%;
+    aspect-ratio: 1 / 0.78;
+    object-fit: cover;
+    object-position: center;
+    background: #edf7e9;
+}
+
+.isi-produk-pembeli {
+    display: grid;
+    gap: 7px;
+    padding: 10px;
+}
+
+.nama-produk-pembeli {
+    min-height: 36px;
+    color: var(--teks);
+    font-size: 14px;
+    line-height: 1.25;
+    font-weight: 900;
+}
+
+.deskripsi-produk-pembeli {
+    min-height: 32px;
+    color: #5c5c5c;
+    font-size: 11.5px;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.meta-produk-pembeli {
+    display: grid;
+    gap: 3px;
+}
+
+.harga-produk-pembeli {
+    color: var(--hijau);
+    font-size: 15px;
+    line-height: 1.15;
+    font-weight: 900;
+}
+
+.petani-produk-pembeli,
+.alamat-produk-pembeli,
+.stok-produk-pembeli {
+    color: #747474;
+    font-size: 10.5px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.alamat-produk-pembeli {
+    color: #4f5f55;
+}
+
+.kontrol-beli-pembeli {
+    display: grid;
+    gap: 7px;
+    margin-top: 3px;
+}
+
+.pengatur-jumlah-pembeli {
+    min-width: 0;
+    height: 34px;
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) 34px;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #dfe8dd;
+    border-radius: 11px;
+    background: #f8fbf8;
+}
+
+.tombol-jumlah-pembeli {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    color: var(--hijau);
+    background: #ffffff;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.tombol-jumlah-pembeli:disabled {
+    color: #a9b5aa;
+    cursor: not-allowed;
+}
+
+.angka-jumlah-pembeli {
+    min-width: 0;
+    color: var(--teks);
+    text-align: center;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.input-jumlah-beli {
+    min-width: 0;
+    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px;
+    background: #f8fbf8;
+}
+
+.input-jumlah-beli input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    color: var(--teks);
+    background: transparent;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.input-jumlah-beli span {
+    color: #5f695f;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.tombol-beli-pembeli {
+    width: 100%;
+    min-height: 36px;
+    padding: 6px 8px;
+    border-radius: 11px;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--hijau), var(--hijau-tua));
+    font-size: 12px;
+    line-height: 1.15;
+    font-weight: 900;
+    white-space: normal;
+    cursor: pointer;
+}
+
+.tombol-beli-pembeli:disabled {
+    background: #a9b5aa;
+    cursor: not-allowed;
+}
+
+.panel-jumlah-beli {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 35;
+    display: grid;
+    gap: 14px;
+    max-height: min(88dvh, 690px);
+    overflow-y: auto;
+    padding: 12px 18px calc(18px + env(safe-area-inset-bottom));
+    border-radius: 24px 24px 0 0;
+    background: #ffffff;
+    box-shadow: 0 -18px 40px rgba(7, 21, 47, 0.18);
+}
+
+.panel-jumlah-beli[hidden] {
+    display: none;
+}
+
+.panel-jumlah-beli::-webkit-scrollbar {
+    display: none;
+}
+
+.pegangan-panel-beli {
+    width: 42px;
+    height: 5px;
+    margin: 0 auto 2px;
+    border-radius: 999px;
+    background: #d9d9d9;
+}
+
+.kepala-panel-beli {
+    position: relative;
+    min-height: 42px;
+    display: grid;
+    align-items: start;
+    padding-right: 42px;
+}
+
+.kepala-panel-beli p {
+    margin-bottom: 4px;
+    color: var(--abu);
+    font-size: 12px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.kepala-panel-beli h2 {
+    color: var(--teks);
+    font-size: 20px;
+    line-height: 1.15;
+    font-weight: 900;
+}
+
+.tombol-tutup-panel-beli {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--teks);
+    background: #f3f5f4;
+    cursor: pointer;
+}
+
+.tombol-tutup-panel-beli span {
+    display: block;
+    font-size: 27px;
+    line-height: 1;
+    font-weight: 800;
+    transform: translateY(-1px);
+}
+
+.ringkasan-panel-beli {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border: 1px solid #eef0ee;
+    border-radius: 16px;
+    background: #f8fbf8;
+}
+
+.ringkasan-panel-beli img {
+    width: 76px;
+    height: 68px;
+    border-radius: 12px;
+    object-fit: cover;
+    object-position: center;
+    background: #edf7e9;
+}
+
+.ringkasan-panel-beli div {
+    min-width: 0;
+    display: grid;
+    gap: 5px;
+}
+
+.ringkasan-panel-beli strong {
+    color: var(--hijau);
+    font-size: 18px;
+    line-height: 1.15;
+    font-weight: 900;
+}
+
+.ringkasan-panel-beli span {
+    color: #747474;
+    font-size: 12px;
+    line-height: 1.25;
+    font-weight: 800;
+}
+
+.ringkasan-panel-beli .panel-alamat-produk {
+    color: #40594a;
+    font-size: 11.5px;
+    line-height: 1.3;
+}
+
+.jumlah-panel-beli {
+    display: grid;
+    gap: 9px;
+}
+
+.jumlah-panel-beli > span {
+    color: var(--teks);
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.pengatur-jumlah-panel {
+    height: 46px;
+    grid-template-columns: 46px minmax(0, 1fr) 46px;
+}
+
+.pengatur-jumlah-panel .tombol-jumlah-pembeli {
+    width: 46px;
+    height: 46px;
+    font-size: 24px;
+}
+
+.total-panel-beli {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid #bfe6c5;
+    border-radius: 16px;
+    background: #f2fff1;
+}
+
+.total-panel-beli span {
+    color: #14532d;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.total-panel-beli strong {
+    color: var(--hijau);
+    font-size: 19px;
+    line-height: 1;
+    font-weight: 900;
+}
+
+.form-pembayaran-pembeli {
+    display: grid;
+    gap: 12px;
+}
+
+.catatan-pembelian {
+    display: grid;
+    gap: 7px;
+    color: var(--teks);
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.catatan-pembelian span small {
+    color: #7a827b;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.catatan-pembelian textarea {
+    width: 100%;
+    min-height: 78px;
+    resize: vertical;
+    padding: 10px 12px;
+    border: 1px solid #d9e2d8;
+    border-radius: 8px;
+    color: var(--teks);
+    background: #ffffff;
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.catatan-pembelian textarea:focus {
+    border-color: var(--hijau);
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(15, 138, 54, 0.14);
+}
+
+.form-pembayaran-pembeli fieldset {
+    display: grid;
+    gap: 9px;
+    border: 0;
+}
+
+.form-pembayaran-pembeli legend {
+    margin-bottom: 2px;
+    color: var(--teks);
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.opsi-pembayaran-pembeli {
+    min-width: 0;
+    min-height: 58px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: center;
+    gap: 11px;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    background: #ffffff;
+    cursor: pointer;
+}
+
+.opsi-pembayaran-pembeli input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.opsi-pembayaran-pembeli.terpilih {
+    border-color: var(--hijau);
+    background: #f2fff1;
+    box-shadow: 0 8px 18px rgba(15, 138, 54, 0.12);
+}
+
+.opsi-pembayaran-pembeli:focus-within {
+    outline: 3px solid rgba(12, 150, 61, 0.18);
+    outline-offset: 2px;
+}
+
+.opsi-pembayaran-pembeli.opsi-gangguan {
+    border-color: #ffd0d0;
+    background: #fff7f7;
+    cursor: not-allowed;
+}
+
+.opsi-pembayaran-pembeli.opsi-gangguan .ikon-pembayaran-pembeli {
+    color: #c92828;
+    background: #ffe4e4;
+}
+
+.opsi-pembayaran-pembeli.opsi-gangguan .teks-pembayaran-pembeli strong,
+.opsi-pembayaran-pembeli.opsi-gangguan .teks-pembayaran-pembeli small {
+    color: #8a8a8a;
+}
+
+.ikon-pembayaran-pembeli {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    color: var(--hijau);
+    background: #e6f6dd;
+}
+
+.ikon-pembayaran-pembeli svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
+.teks-pembayaran-pembeli {
+    min-width: 0;
+    display: grid;
+    gap: 3px;
+}
+
+.teks-pembayaran-pembeli strong {
+    color: var(--teks);
+    font-size: 15px;
+    line-height: 1.15;
+    font-weight: 900;
+}
+
+.teks-pembayaran-pembeli em {
+    display: inline-block;
+    margin-left: 4px;
+    padding: 3px 6px;
+    border-radius: 999px;
+    color: #ffffff;
+    background: var(--hijau);
+    font-size: 9px;
+    line-height: 1;
+    font-style: normal;
+    font-weight: 900;
+    vertical-align: middle;
+}
+
+.teks-pembayaran-pembeli em.gangguan {
+    color: #ffffff;
+    background: #e11d1d;
+}
+
+.teks-pembayaran-pembeli small {
+    color: #6b7280;
+    font-size: 12px;
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+.status-pembayaran-pembeli {
+    min-height: 17px;
+    color: var(--hijau);
+    font-size: 12.5px;
+    line-height: 1.3;
+    font-weight: 800;
+}
+
+.tombol-konfirmasi-beli {
+    width: 100%;
+    min-height: 46px;
+    border-radius: 13px;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--hijau), var(--hijau-tua));
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.tombol-konfirmasi-beli:disabled {
+    background: #a9b5aa;
+    cursor: not-allowed;
+}
+
+.produk-tidak-ada {
+    grid-column: 1 / -1;
+    min-height: 190px;
+    display: grid;
+    place-items: center;
+    padding: 22px;
+    border: 1px dashed #c8d9c5;
+    border-radius: 18px;
+    background: #f7fff5;
+    text-align: center;
+}
+
+.produk-tidak-ada h2 {
+    margin-bottom: 7px;
+    color: var(--teks);
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 900;
+}
+
+.produk-tidak-ada p {
+    color: var(--abu);
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 800;
+}
+
+.marketplace-pembeli-tutup {
+    border-color: #f0d9b6;
+    background: #fffaf1;
+}
+
+.toast-pembeli {
+    position: absolute;
+    right: 16px;
+    bottom: 92px;
+    left: 16px;
+    z-index: 20;
+    min-height: 46px;
+    display: grid;
+    place-items: center;
+    padding: 10px 14px;
+    border-radius: 14px;
+    color: #ffffff;
+    background: #07152f;
+    box-shadow: 0 12px 26px rgba(7, 21, 47, 0.2);
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.35;
+    font-weight: 900;
+}
+
+.toast-pembeli[hidden] {
+    display: none;
+}
+
+@media (max-width: 390px) {
+    .kepala-pembeli {
+        height: 98px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .kepala-pembeli h1 {
+        font-size: 28px;
+    }
+
+    .konten-marketplace-pembeli {
+        top: 98px;
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .daftar-produk-pembeli {
+        gap: 10px;
+    }
+
+    .nama-produk-pembeli {
+        font-size: 13px;
+    }
+
+    .deskripsi-produk-pembeli {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 340px) {
+    .kepala-pembeli h1 {
+        font-size: 25px;
+    }
+
+    .tombol-notifikasi {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+    }
+
+    .tombol-notifikasi svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .daftar-produk-pembeli {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    body {
+        padding-top: 18px;
+    }
+
+    .halaman-marketplace-pembeli {
+        height: calc(100dvh - 18px);
+        border-radius: 28px;
+        box-shadow: 0 20px 60px rgba(7, 21, 47, 0.18);
+    }
+}
