@@ -1,74 +1,151 @@
-# POKTAN PADI
+<p align="center">
+    <img src="https://laravel.com/img/logomark.min.svg" width="140" alt="Laravel Logo">
+</p>
 
-Aplikasi web Laravel untuk pengelolaan kelompok tani, marketplace hasil pertanian, pemesanan pupuk, jadwal tanam, hasil panen, cuaca, notifikasi, dan administrasi pengguna.
+<h1 align="center">POKTAN PADI</h1>
 
-## Kebutuhan
+<p align="center">
+Poktan Padi Berbasis Laravel
+</p>
 
-- PHP 8.3 atau lebih baru
-- Composer
-- Node.js dan npm
-- MySQL 8+ atau MariaDB 10.6+
-- Ekstensi PHP yang dibutuhkan Laravel dan driver PDO MySQL
+<p align="center">
 
-## Instalasi lokal
+![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)
+![PHP](https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php)
+![MySQL](https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+</p>
+
+---
+
+# 📖 Tentang Project
+
+POKTAN PADI merupakan aplikasi berbasis web yang dibuat menggunakan **Laravel Framework** untuk membantu digitalisasi kegiatan Kelompok Tani.
+
+Fitur utama meliputi:
+
+- 🌱 Data Kelompok Tani
+- 👨‍🌾 Data Petani
+- 🌾 Data Hasil Panen
+- 🛒 Marketplace Produk Pertanian
+- 💳 Pembayaran
+- 📷 Galeri
+- 📚 Edukasi Pertanian
+- 🦗 Informasi Hama & Penyakit
+- 📊 Dashboard Admin
+
+---
+
+# 🚀 Teknologi
+
+- Laravel
+- PHP
+- MySQL
+- Bootstrap
+- JavaScript
+- Vite
+
+---
+
+# 📂 Struktur Project
+
+```
+app/
+bootstrap/
+config/
+database/
+public/
+resources/
+routes/
+storage/
+```
+
+---
+
+# ⚙️ Instalasi
+
+Clone project
+
+```bash
+git clone https://github.com/LUNIARZ/POKTAN_PADI.git
+```
+
+Masuk folder project
+
+```bash
+cd POKTAN_PADI
+```
+
+Install dependency
 
 ```bash
 composer install
-copy .env.example .env
-php artisan key:generate
-php artisan migrate --seed
+```
+
+Install Node
+
+```bash
 npm install
-npm run build
-php artisan storage:link
 ```
 
-Akun admin awal:
-
-```text
-
-```
-
-Ubah `ADMIN_INITIAL_PASSWORD` pada `.env` sebelum menjalankan seeder jika ingin memakai password admin lain.
-
-## Deployment production
-
-1. Salin `.env.example` menjadi `.env`.
-2. Ubah `APP_ENV=production`, `APP_DEBUG=false`, lalu isi `APP_URL`, `APP_KEY`, kredensial database, email, dan `ADMIN_INITIAL_PASSWORD` dengan password admin yang kuat.
-3. Arahkan document root web server ke folder `public`.
-4. Jalankan:
+Copy file environment
 
 ```bash
-composer install --no-dev --optimize-autoloader
-npm ci
-npm run build
-php artisan storage:link
-php artisan migrate --force
-php artisan optimize
+cp .env.example .env
 ```
 
-5. Pastikan `storage` dan `bootstrap/cache` dapat ditulis oleh proses web.
-6. Jalankan worker queue menggunakan process manager:
+Generate key
 
 ```bash
-php artisan queue:work --sleep=3 --tries=3 --max-time=3600
+php artisan key:generate
 ```
 
-7. Jadwalkan Laravel scheduler setiap menit:
-
-```cron
-* * * * * cd /path/to/poktan && php artisan schedule:run >> /dev/null 2>&1
-```
-
-Production wajib menggunakan HTTPS dengan `APP_DEBUG=false`, `SESSION_SECURE_COOKIE=true`, dan password database khusus yang tidak memakai akun `root`.
-
-## Verifikasi sebelum rilis
+Migrasi database
 
 ```bash
-php artisan test
-vendor/bin/pint --test
-npm audit --omit=dev
-npm run build
-php artisan route:list --except-vendor
+php artisan migrate
 ```
 
-Endpoint health check Laravel tersedia pada `/up`.
+Jalankan aplikasi
+
+```bash
+php artisan serve
+```
+
+Compile Asset
+
+```bash
+npm run dev
+```
+
+---
+
+# 📸 Tampilan
+
+Tambahkan screenshot aplikasi di sini.
+
+Contoh:
+
+```
+docs/
+├── login.png
+├── dashboard.png
+├── landing.png
+```
+
+---
+
+# 👥 Anggota Kelompok
+
+| Nama | NIM |
+|-------|-----|
+| Nama Anggota 1 | xxxxxxxxx |
+| Nama Anggota 2 | xxxxxxxxx |
+| Nama Anggota 3 | xxxxxxxxx |
+
+---
+
+# 📄 Lisensi
+
+Project ini dibuat untuk keperluan akademik dan pembelajaran.
