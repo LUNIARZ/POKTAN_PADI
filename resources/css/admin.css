@@ -294,33 +294,6 @@
     gap: 12px;
 }
 
-.admin-settings-form .form-label {
-    margin: 0;
-    color: #344054;
-    font-size: 13px;
-    font-weight: 900;
-}
-
-.admin-settings-form .form-control,
-.admin-settings-form .form-select {
-    margin-top: 6px;
-    border-color: #d9e2d8;
-    border-radius: 10px;
-    font-weight: 700;
-}
-
-.admin-settings-form .form-control:focus,
-.admin-settings-form .form-select:focus {
-    border-color: var(--admin-green);
-    box-shadow: 0 0 0 0.2rem rgba(12, 150, 61, 0.14);
-}
-
-.admin-settings-form .form-label > small {
-    display: block;
-    margin-top: 6px;
-    font-weight: 700;
-}
-
 .admin-settings-feedback {
     font-weight: 800;
 }
@@ -744,6 +717,11 @@
     vertical-align: middle;
 }
 
+.table td strong {
+    font-variant-numeric: tabular-nums;
+    word-break: break-word;
+}
+
 .empty-row {
     height: 116px;
     color: var(--admin-muted) !important;
@@ -818,6 +796,28 @@
     background: #ffe5e0;
 }
 
+/* Badge Kelompok Tani di tabel pengguna */
+.kelompok-tani-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    min-height: 24px;
+    padding: 0 10px;
+    border-radius: 999px;
+    background: #e5f8ea;
+    color: #08752d;
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.kelompok-tani-badge-empty {
+    color: var(--admin-muted);
+    font-size: 12px;
+    font-weight: 700;
+    font-style: italic;
+}
+
 .admin-actions {
     display: inline-flex;
     flex-wrap: wrap;
@@ -836,6 +836,24 @@
 .danger-zone {
     border-color: #ffd1d1;
     background: #fffafa;
+}
+
+/* Sticky kolom Aksi supaya tombol Edit/Hapus tetap terlihat tanpa scroll horizontal */
+.table-responsive {
+    position: relative;
+}
+
+.table th.text-end,
+.table td.text-end {
+    position: sticky;
+    right: 0;
+    z-index: 1;
+    background: #ffffff;
+    box-shadow: -6px 0 10px -6px rgba(16, 32, 51, 0.18);
+}
+
+.table thead th.text-end {
+    background: #ffffff;
 }
 
 @media (max-width: 991.98px) {

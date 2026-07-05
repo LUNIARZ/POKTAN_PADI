@@ -106,6 +106,36 @@
                     @enderror
                 </div>
 
+                {{-- ── Kelompok Tani ── --}}
+                <div class="kolom-formulir @error('id_kelompok_tani') memiliki-error @enderror">
+                    <label for="id_kelompok_tani">Kelompok Tani</label>
+                    <select
+                        id="id_kelompok_tani"
+                        name="id_kelompok_tani"
+                        @error('id_kelompok_tani') aria-invalid="true" aria-describedby="kelompok-tani-error" @enderror
+                        required
+                    >
+                        <option value="" disabled {{ old('id_kelompok_tani') ? '' : 'selected' }}>
+                            -- Pilih Kelompok Tani --
+                        </option>
+                        @foreach ($kelompokTani as $kelompok)
+                            <option
+                                value="{{ $kelompok->id }}"
+                                {{ old('id_kelompok_tani') == $kelompok->id ? 'selected' : '' }}
+                            >
+                                {{ $kelompok->nama }}
+                                @if ($kelompok->kecamatan)
+                                    – {{ $kelompok->kecamatan }}
+                                @endif
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('id_kelompok_tani')
+                        <p id="kelompok-tani-error" class="pesan-field" role="alert" data-field-error>{{ $message }}</p>
+                    @enderror
+                </div>
+                {{-- ── Akhir Kelompok Tani ── --}}
+
                 <div class="kolom-formulir kolom-password @error('password') memiliki-error @enderror">
                     <label for="password">Password</label>
                     <div class="wadah-password">

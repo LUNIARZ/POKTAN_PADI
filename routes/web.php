@@ -16,7 +16,20 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingController; // ← tambahkan ini
 
+Route::get('/', [LandingController::class, 'index'])->name('landing');
+/*
+Route::get('/', function () {
+    return view('landing.index');
+})->name('landing');
+
+Route::view('/', 'landing.index');
+
+Route::view('/landing', 'landing.index');
+*/
+
+/*
 Route::get('/', function () {
     return auth()->check() ? redirect()->route(match (auth()->user()->peran) {
         'admin' => 'admin',
@@ -24,6 +37,7 @@ Route::get('/', function () {
         default => 'dashboard',
     }) : redirect()->route('login');
 });
+*/
 
 Route::get('/login', [AuthController::class, 'create'])->name('login');
 Route::post('/login', [AuthController::class, 'store'])
@@ -31,7 +45,8 @@ Route::post('/login', [AuthController::class, 'store'])
     ->name('login.store');
 
 Route::middleware('guest')->group(function () {
-    Route::view('/daftar', 'daftar')->name('daftar');
+    //Route::view('/daftar', 'daftar')->name('daftar');
+    Route::get('/daftar', [AuthController::class, 'createPetani'])->name('daftar');
     Route::post('/daftar', [AuthController::class, 'registerPetani'])
         ->middleware('throttle:registration')
         ->name('daftar.store');
@@ -44,7 +59,14 @@ Route::middleware('guest')->group(function () {
 Route::post('/logout', [AuthController::class, 'destroy'])->middleware('auth')->name('logout');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::view('/admin', 'admin')->name('admin');
+        Route::get('/admin', function () {
+            return view('admin', [
+                'kelompokTani' => \App\Models\KelompokTani::where('aktif', true)
+                                    ->orderBy('nama')
+                                    ->get(),
+            ]);
+        })->name('admin');    
+
     Route::prefix('api/admin')->middleware('throttle:api')->group(function () {
         Route::get('/bootstrap', [AdminController::class, 'bootstrap']);
         Route::post('/pengguna', [AdminController::class, 'storeUser']);

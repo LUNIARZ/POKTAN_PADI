@@ -4,7 +4,6 @@
             <p class="text-success fw-bold mb-1">Manajemen Pengguna</p>
             <h1>Pengguna</h1>
         </div>
-
     </div>
 
     <div class="user-filter-tabs mb-3" role="group" aria-label="Pilih jenis pengguna">
@@ -34,6 +33,23 @@
                         NIK Petani
                         <input class="form-control" type="text" inputmode="numeric" minlength="16" maxlength="16" pattern="[0-9]{16}" data-admin-user-nik placeholder="16 digit NIK">
                     </label>
+
+                    {{-- Kelompok Tani — hanya tampil untuk Petani --}}
+                    <label class="form-label" data-admin-user-farmer-field>
+                        Kelompok Tani
+                        <select class="form-select" data-admin-user-kelompok-tani>
+                            <option value="">-- Pilih Kelompok Tani --</option>
+                            @foreach ($kelompokTani as $kelompok)
+                                <option value="{{ $kelompok->id }}">
+                                    {{ $kelompok->nama }}
+                                    @if ($kelompok->kecamatan)
+                                        – {{ $kelompok->kecamatan }}
+                                    @endif
+                                </option>
+                            @endforeach
+                        </select>
+                    </label>
+                    {{-- Akhir Kelompok Tani --}}
 
                     <label class="form-label" data-admin-user-buyer-field hidden>
                         Nama Gudang
@@ -123,6 +139,7 @@
                                 <th>Nama</th>
                                 <th>No HP</th>
                                 <th>Data Diri</th>
+                                <th data-admin-user-farmer-col>Kelompok Tani</th>
                                 <th>Lahan & Pupuk</th>
                                 <th>Status</th>
                                 <th>Password</th>

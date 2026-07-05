@@ -36,5 +36,6 @@ class ProdukMarketplace extends Model
     public function penjual(): BelongsTo
     {
         return $this->belongsTo(User::class, 'id_penjual');
+        return $this->belongsTo(\App\Models\User::class, 'id_penjual');
     }
 }

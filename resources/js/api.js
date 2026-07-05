@@ -28,7 +28,7 @@ export async function api(url, options = {}) {
         throw new Error('Tidak dapat terhubung ke server. Periksa koneksi lalu coba lagi.');
     }
 
-    if (response.redirected && new URL(response.url).pathname === '/login') {
+    if (response.redirected && new URL(response.url).pathname === '/landing') {
         window.location.assign(response.url);
         throw new Error('Sesi Anda telah berakhir. Silakan masuk kembali.');
     }

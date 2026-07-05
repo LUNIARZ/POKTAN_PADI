@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KelompokTani;
 use App\Models\LahanPetani;
 use App\Models\ProfilPembeli;
 use App\Models\ProfilPetani;
@@ -27,9 +28,9 @@ class AuthController extends Controller
             'password' => ['required', 'string'],
         ], [
             'username.required' => 'NIK atau nomor handphone wajib diisi.',
-            'username.string' => 'Identitas login tidak valid.',
+            'username.string'   => 'Identitas login tidak valid.',
             'password.required' => 'Password wajib diisi.',
-            'password.string' => 'Password tidak valid.',
+            'password.string'   => 'Password tidak valid.',
         ]);
 
         $identifier = $this->normalizeLoginIdentifier($credentials['username']);
@@ -59,7 +60,7 @@ class AuthController extends Controller
             ->first();
 
         if (! $user || $user->status !== 'aktif' || ! Auth::attempt([
-            'id' => $user->id,
+            'id'       => $user->id,
             'password' => $credentials['password'],
         ], $request->boolean('remember'))) {
             return back()
@@ -70,12 +71,12 @@ class AuthController extends Controller
         }
 
         $request->session()->regenerate();
-
         $request->session()->forget('url.intended');
 
         return redirect()->to($this->homeFor($user));
     }
 
+    // ── Daftar Petani ──────────────────────────────────────────────────────────
     public function registerPetani(Request $request): RedirectResponse
     {
         $request->merge([
@@ -83,45 +84,49 @@ class AuthController extends Controller
         ]);
 
         $data = $request->validate([
-            'nik' => ['required', 'digits:16', 'unique:users,nik'],
-            'nama' => ['required', 'string', 'max:150'],
-            'no_hp' => ['required', 'regex:/^08[0-9]{8,13}$/', 'unique:users,nomor_hp'],
-            'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
+            'nik'               => ['required', 'digits:16', 'unique:users,nik'],
+            'nama'              => ['required', 'string', 'max:150'],
+            'no_hp'             => ['required', 'regex:/^08[0-9]{8,13}$/', 'unique:users,nomor_hp'],
+            'id_kelompok_tani'  => ['required', 'exists:kelompok_tani,id'],
+            'password'          => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
         ], [
-            'nik.required' => 'NIK wajib diisi.',
-            'nik.digits' => 'NIK harus terdiri dari 16 digit angka.',
-            'nik.unique' => 'NIK sudah terdaftar. Gunakan NIK lain.',
-            'nama.required' => 'Nama lengkap wajib diisi.',
-            'nama.string' => 'Nama lengkap harus berupa teks.',
-            'nama.max' => 'Nama lengkap maksimal 150 karakter.',
-            'no_hp.required' => 'Nomor handphone wajib diisi.',
-            'no_hp.regex' => 'Nomor handphone harus diawali 08 dan terdiri dari 10-15 digit angka.',
-            'no_hp.unique' => 'Nomor handphone sudah terdaftar.',
-            'password.required' => 'Password wajib diisi.',
-            'password.confirmed' => 'Konfirmasi password tidak sesuai.',
-            'password.min' => 'Password minimal 8 karakter.',
-            'password.letters' => 'Password harus mengandung huruf.',
-            'password.numbers' => 'Password harus mengandung angka.',
+            'nik.required'              => 'NIK wajib diisi.',
+            'nik.digits'                => 'NIK harus terdiri dari 16 digit angka.',
+            'nik.unique'                => 'NIK sudah terdaftar. Gunakan NIK lain.',
+            'nama.required'             => 'Nama lengkap wajib diisi.',
+            'nama.string'               => 'Nama lengkap harus berupa teks.',
+            'nama.max'                  => 'Nama lengkap maksimal 150 karakter.',
+            'no_hp.required'            => 'Nomor handphone wajib diisi.',
+            'no_hp.regex'               => 'Nomor handphone harus diawali 08 dan terdiri dari 10-15 digit angka.',
+            'no_hp.unique'              => 'Nomor handphone sudah terdaftar.',
+            'id_kelompok_tani.required' => 'Kelompok tani wajib dipilih.',
+            'id_kelompok_tani.exists'   => 'Kelompok tani yang dipilih tidak valid.',
+            'password.required'         => 'Password wajib diisi.',
+            'password.confirmed'        => 'Konfirmasi password tidak sesuai.',
+            'password.min'              => 'Password minimal 8 karakter.',
+            'password.letters'          => 'Password harus mengandung huruf.',
+            'password.numbers'          => 'Password harus mengandung angka.',
         ]);
 
         $user = DB::transaction(function () use ($data) {
             $user = User::create([
-                'name' => $data['nama'],
-                'username' => $data['nik'],
-                'nomor_hp' => $data['no_hp'],
-                'nik' => $data['nik'],
-                'peran' => 'petani',
-                'status' => 'menunggu',
-                'password' => $data['password'],
+                'name'                => $data['nama'],
+                'username'            => $data['nik'],
+                'nomor_hp'            => $data['no_hp'],
+                'nik'                 => $data['nik'],
+                'id_kelompok_tani'    => $data['id_kelompok_tani'],
+                'peran'               => 'petani',
+                'status'              => 'menunggu',
+                'password'            => $data['password'],
                 'password_updated_at' => now(),
             ]);
 
             ProfilPetani::create(['id_pengguna' => $user->id]);
             LahanPetani::create([
-                'id_petani' => $user->id,
-                'nama_lahan' => 'Lahan Padi',
+                'id_petani'    => $user->id,
+                'nama_lahan'   => 'Lahan Padi',
                 'nama_pemilik' => $user->name,
-                'luas_meter' => 0,
+                'luas_meter'   => 0,
             ]);
 
             return $user;
@@ -129,6 +134,16 @@ class AuthController extends Controller
 
         return redirect()->route('login')
             ->with('status', "Pendaftaran {$user->name} berhasil. Tunggu admin mengaktifkan akun.");
+    }
+
+    // ── Tampilkan form daftar petani (dengan daftar kelompok tani) ─────────────
+    public function createPetani(): View
+    {
+        $kelompokTani = KelompokTani::where('aktif', true)
+            ->orderBy('nama')
+            ->get();
+
+        return view('daftar', compact('kelompokTani'));
     }
 
     public function registerPembeli(Request $request): RedirectResponse
@@ -140,32 +155,32 @@ class AuthController extends Controller
         $data = $request->validate([
             'nama_lengkap' => ['required', 'string', 'max:150'],
             'no_handphone' => ['required', 'regex:/^08[0-9]{8,13}$/', 'unique:users,nomor_hp'],
-            'nama_gudang' => ['nullable', 'string', 'max:150'],
-            'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
+            'nama_gudang'  => ['nullable', 'string', 'max:150'],
+            'password'     => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
         ], [
             'nama_lengkap.required' => 'Nama lengkap wajib diisi.',
-            'nama_lengkap.string' => 'Nama lengkap harus berupa teks.',
-            'nama_lengkap.max' => 'Nama lengkap maksimal 150 karakter.',
+            'nama_lengkap.string'   => 'Nama lengkap harus berupa teks.',
+            'nama_lengkap.max'      => 'Nama lengkap maksimal 150 karakter.',
             'no_handphone.required' => 'Nomor handphone wajib diisi.',
-            'no_handphone.regex' => 'Nomor handphone harus diawali 08 dan terdiri dari 10-15 digit angka.',
-            'no_handphone.unique' => 'Nomor handphone sudah terdaftar.',
-            'nama_gudang.string' => 'Nama gudang harus berupa teks.',
-            'nama_gudang.max' => 'Nama gudang maksimal 150 karakter.',
-            'password.required' => 'Password wajib diisi.',
-            'password.confirmed' => 'Konfirmasi password tidak sesuai.',
-            'password.min' => 'Password minimal 8 karakter.',
-            'password.letters' => 'Password harus mengandung huruf.',
-            'password.numbers' => 'Password harus mengandung angka.',
+            'no_handphone.regex'    => 'Nomor handphone harus diawali 08 dan terdiri dari 10-15 digit angka.',
+            'no_handphone.unique'   => 'Nomor handphone sudah terdaftar.',
+            'nama_gudang.string'    => 'Nama gudang harus berupa teks.',
+            'nama_gudang.max'       => 'Nama gudang maksimal 150 karakter.',
+            'password.required'     => 'Password wajib diisi.',
+            'password.confirmed'    => 'Konfirmasi password tidak sesuai.',
+            'password.min'          => 'Password minimal 8 karakter.',
+            'password.letters'      => 'Password harus mengandung huruf.',
+            'password.numbers'      => 'Password harus mengandung angka.',
         ]);
 
         DB::transaction(function () use ($data) {
             $user = User::create([
-                'name' => $data['nama_lengkap'],
-                'username' => $data['no_handphone'],
-                'nomor_hp' => $data['no_handphone'],
-                'peran' => 'pembeli',
-                'status' => 'aktif',
-                'password' => $data['password'],
+                'name'                => $data['nama_lengkap'],
+                'username'            => $data['no_handphone'],
+                'nomor_hp'            => $data['no_handphone'],
+                'peran'               => 'pembeli',
+                'status'              => 'aktif',
+                'password'            => $data['password'],
                 'password_updated_at' => now(),
             ]);
 
@@ -191,9 +206,9 @@ class AuthController extends Controller
     private function homeFor(User $user): string
     {
         return match ($user->peran) {
-            'admin' => route('admin'),
+            'admin'   => route('admin'),
             'pembeli' => route('pembeli.marketplace'),
-            default => route('dashboard'),
+            default   => route('dashboard'),
         };
     }
 

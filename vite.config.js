@@ -38,11 +38,18 @@ export default defineConfig({
                 'resources/js/profile.js',
                 'resources/js/riwayat-transaksi.js',
                 'resources/js/riwayat-belanja-pembeli.js',
+
+                'resources/css/landing.css',
+                'resources/js/landing.js',
             ],
             refresh: true,
         }),
     ],
     server: {
+        host: '0.0.0.0',
+        hmr: {
+            host: '192.168.1.13',
+        },
         watch: {
             ignored: ['**/storage/framework/views/**'],
         },

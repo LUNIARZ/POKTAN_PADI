@@ -270,6 +270,7 @@ function renderUsers() {
             : `${roleUsers.length} ${state.role.toLowerCase()}`;
     }
     qsa('[data-admin-user-filter]').forEach((button) => button.classList.toggle('active', button.dataset.adminUserFilter === state.role));
+    //qsa('[data-admin-user-farmer-field], [data-admin-user-farmer-limit], [data-admin-user-farmer-col]').forEach((item) => item.hidden = state.role !== 'Petani');
     qsa('[data-admin-user-farmer-field], [data-admin-user-farmer-limit]').forEach((item) => item.hidden = state.role !== 'Petani');
     qsa('[data-admin-user-buyer-field]').forEach((item) => item.hidden = state.role !== 'Pembeli');
     qsa('[data-admin-user-status-field]').forEach((item) => item.hidden = state.role === 'Pembeli');
@@ -284,6 +285,7 @@ function renderUsers() {
                 <strong>${user.role === 'Petani' ? `NIK: ${escapeHtml(user.nik || '-')}` : `Gudang: ${escapeHtml(user.warehouseName || '-')}`}</strong>
                 <div class="small text-secondary">${escapeHtml(user.address || '-')}</div>
             </td>
+            <td>${user.role === 'Petani' ? escapeHtml(user.kelompokTaniName || '-') : '-'}</td>
             <td>${user.role === 'Petani' ? `${number.format(user.landAreaMeter)} meter` : '-'}</td>
             <td><span class="status-pill status-${statusClass(user.status)}">${escapeHtml(user.status)}</span></td>
             <td><span class="badge text-bg-success">${user.hasPassword ? 'Diatur' : 'Belum'}</span></td>
@@ -292,7 +294,7 @@ function renderUsers() {
                 <button class="btn btn-sm btn-outline-danger" data-delete-user="${user.id}">Hapus</button>
             </td>
         </tr>
-    `).join('') : empty(7, query
+    `).join('') : empty(8, query
         ? `${state.role} dengan nama atau ${state.role === 'Petani' ? 'NIK' : 'No. HP'} tersebut tidak ditemukan.`
         : `Belum ada ${state.role.toLowerCase()}.`);
 }
@@ -560,6 +562,7 @@ qs('[data-admin-user-form]')?.addEventListener('submit', async (event) => {
             phone: qs('[data-admin-user-phone]').value,
             role: state.role,
             nik: qs('[data-admin-user-nik]').value || null,
+            kelompokTaniId: state.role === 'Petani' ? (qs('[data-admin-user-kelompok-tani]').value || null) : null,
             warehouseName: qs('[data-admin-user-warehouse]').value || null,
             address: qs('[data-admin-user-address]').value,
             landAreaMeter: wholeNumber(qs('[data-admin-user-land-area]').value),
@@ -729,6 +732,7 @@ document.addEventListener('click', async (event) => {
             state.role = user.role; renderUsers();
             qs('[data-admin-user-id]').value = user.id; qs('[data-admin-user-name]').value = user.name;
             qs('[data-admin-user-phone]').value = user.phone; qs('[data-admin-user-nik]').value = user.nik;
+            qs('[data-admin-user-kelompok-tani]').value = user.kelompokTaniId || '';
             qs('[data-admin-user-warehouse]').value = user.warehouseName; qs('[data-admin-user-address]').value = user.address;
             qs('[data-admin-user-land-area]').value = user.landAreaMeter; qs('[data-admin-user-status]').value = user.status;
             qs('[data-admin-user-form-title]').textContent = `Edit ${user.role}`;

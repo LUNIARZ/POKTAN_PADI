@@ -411,6 +411,7 @@ class AdminController extends Controller
                 'digits:16',
                 Rule::unique('users', 'nik')->ignore($user?->id),
             ],
+            'kelompokTaniId' => ['nullable', 'integer', Rule::exists('kelompok_tani', 'id')],
             'warehouseName' => [Rule::requiredIf($request->input('role') === 'Pembeli'), 'nullable', 'string', 'max:150'],
             'address' => ['nullable', 'string'],
             'landAreaMeter' => ['nullable', 'integer', 'min:0'],
@@ -435,21 +436,22 @@ class AdminController extends Controller
     private function userPayload(array $data, ?User $user = null): array
     {
         $role = Str::lower($data['role']);
-        $payload = [
-            'name' => $data['name'],
-            'username' => $role === 'petani' ? $data['nik'] : $data['phone'],
-            'nomor_hp' => $data['phone'],
-            'nik' => $role === 'petani' ? $data['nik'] : null,
-            'alamat' => $data['address'] ?? null,
-            'peran' => $role,
-            'status' => $role === 'pembeli' ? 'aktif' : Str::lower($data['status']),
-        ];
-        if (filled($data['password'] ?? null)) {
-            $payload['password'] = $data['password'];
-            $payload['password_updated_at'] = now();
-        }
+            $payload = [
+                'name' => $data['name'],
+                'username' => $role === 'petani' ? $data['nik'] : $data['phone'],
+                'nomor_hp' => $data['phone'],
+                'nik' => $role === 'petani' ? $data['nik'] : null,
+                'id_kelompok_tani' => $role === 'petani' ? ($data['kelompokTaniId'] ?? null) : null,
+                'alamat' => $data['address'] ?? null,
+                'peran' => $role,
+                'status' => $role === 'pembeli' ? 'aktif' : Str::lower($data['status']),
+            ];
+            if (filled($data['password'] ?? null)) {
+                $payload['password'] = $data['password'];
+                $payload['password_updated_at'] = now();
+            }
 
-        return $payload;
+            return $payload;
     }
 
     private function syncUserProfile(User $user, array $data): void
@@ -557,6 +559,7 @@ class AdminController extends Controller
             ->with([
                 'profilPetani',
                 'profilPembeli',
+                'kelompokTani',
                 'lahan' => fn ($query) => $query->where('status', 'aktif'),
             ])
             ->latest()->get()->map(fn ($user) => $this->userRow(
@@ -580,6 +583,8 @@ class AdminController extends Controller
             'phone' => $user->nomor_hp,
             'role' => ucfirst($user->peran),
             'nik' => $user->nik ?? '',
+            'kelompokTaniId' => $user->id_kelompok_tani,
+            'kelompokTaniName' => $user->kelompokTani?->nama,
             'warehouseName' => $user->profilPembeli?->nama_gudang ?? '',
             'address' => $user->alamat ?? '',
             'landAreaMeter' => (int) ($user->profilPetani?->luas_lahan_meter ?? 0),

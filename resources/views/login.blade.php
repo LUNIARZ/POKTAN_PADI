@@ -13,7 +13,7 @@
                 <img class="logo-aplikasi" src="{{ asset('assets/logo-padi.png') }}" alt="Logo POKTAN Lancang Kuning">
             </div>
             <h1>POKTAN</h1>
-            <p>Lancang Kuning</p>
+            <!---<p>Lancang Kuning</p> --->
         </section>
 
         <section class="kartu-login" aria-labelledby="login-title">

@@ -28,6 +28,7 @@
         <section class="konten-hama">
             <section class="daftar-masalah" data-admin-content-list>
 
+                <!---
                 <article class="kartu-masalah">
                     <img
                         src="{{ asset('assets/hama-penyakit/serangga_hijau_di_atas_daun.png') }}"
@@ -115,6 +116,7 @@
                         </svg>
                     </a>
                 </article>
+                --->
 
             </section>
 

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
@@ -25,6 +26,7 @@ class User extends Authenticatable
         'foto_profil',
         'peran',
         'status',
+        'id_kelompok_tani',
         'latitude',
         'longitude',
         'password',
@@ -69,5 +71,10 @@ class User extends Authenticatable
     public function isRole(string ...$roles): bool
     {
         return in_array($this->peran, $roles, true);
+    }
+
+    public function kelompokTani(): BelongsTo
+    {
+        return $this->belongsTo(KelompokTani::class, 'id_kelompok_tani');
     }
 }

@@ -45,6 +45,7 @@
                         Pahami pola musim untuk menentukan waktu tanam terbaik.
                     </p>
 
+                    <!---
                     <button class="tombol-baca">
                         Baca Selengkapnya
                         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -52,12 +53,14 @@
                             <path d="M13 5l7 7-7 7"></path>
                         </svg>
                     </button>
+                    --->
                 </div>
             </article>
 
             <div class="daftar-artikel" data-admin-content-list>
-
+                <!---
                 <article class="kartu-artikel">
+                
                     <img
                         src="{{ asset('assets/edukasi/tumbuhnya_benih_di_tray_kebun.png') }}"
                         alt="Bibit cabai"
@@ -89,6 +92,7 @@
                             <path d="M9 18l6-6-6-6"></path>
                         </svg>
                     </a>
+
                 </article>
 
                 <article class="kartu-artikel">
@@ -187,6 +191,7 @@
                             <path d="M9 18l6-6-6-6"></path>
                         </svg>
                     </a>
+                    --->
                 </article>
 
             </div>
