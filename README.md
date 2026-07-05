@@ -1,4 +1,4 @@
-# POKTAN Lancang Kuning
+# POKTAN PADI
 
 Aplikasi web Laravel untuk pengelolaan kelompok tani, marketplace hasil pertanian, pemesanan pupuk, jadwal tanam, hasil panen, cuaca, notifikasi, dan administrasi pengguna.
 
