@@ -25,8 +25,7 @@ php artisan storage:link
 Akun admin awal:
 
 ```text
-Username: admin
-Password: Admin12345
+
 ```
 
 Ubah `ADMIN_INITIAL_PASSWORD` pada `.env` sebelum menjalankan seeder jika ingin memakai password admin lain.
