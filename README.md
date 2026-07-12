@@ -5,7 +5,7 @@
 <h1 align="center">Sistem Informasi Kemitraan Tani & Dagang Kelompok Tani Padi</h1>
 
 <p align="center">
-Poktan Padi Berbasis Laravel
+Sistem Informasi Kemitraan Tani & Dagang Kelompok Tani Padi Berbasis Laravel
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@ Poktan Padi Berbasis Laravel
 
 # 📖 Tentang Project
 
-POKTAN PADI merupakan aplikasi berbasis web yang dibuat menggunakan **Laravel Framework** untuk membantu digitalisasi kegiatan Kelompok Tani.
+Sistem Informasi Kemitraan Tani & Dagang Kelompok Tani Padi merupakan aplikasi berbasis web yang dibuat menggunakan **Laravel Framework** untuk membantu digitalisasi kegiatan Kelompok Tani.
 
 Fitur utama meliputi:
 
