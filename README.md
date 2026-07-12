@@ -123,10 +123,6 @@ npm run dev
 
 # 📸 Tampilan
 
-Tambahkan screenshot aplikasi di sini.
-
-Contoh:
-
 ```
 docs/
 ├── login.png
