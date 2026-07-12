@@ -2,7 +2,7 @@
     <img src="https://laravel.com/img/logomark.min.svg" width="140" alt="Laravel Logo">
 </p>
 
-<h1 align="center">POKTAN PADI</h1>
+<h1 align="center">Sistem Informasi Kemitraan Tani & Dagang Kelompok Tani Padi</h1>
 
 <p align="center">
 Poktan Padi Berbasis Laravel
