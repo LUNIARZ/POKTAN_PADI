@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POKTAN PADI</title>
+    <title>SISTEM INFORMASI KEMITRAAN TANI & DAGANG KELOMPOK TANI PADI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     @vite(['resources/css/landing.css', 'resources/js/landing.js'])
@@ -26,8 +26,8 @@
                     </svg>
                 </div>
                 <div class="brand-text">
-                    <span class="brand-title">POKTAN</span>
-                    <span class="brand-subtitle">PADI</span>
+                    <span class="brand-title">SISTEM INFORMASI KEMITRAAN TANI &</span>
+                    <span class="brand-subtitle">DAGANG KELOMPOK TANI PADI</span>
                 </div>
             </div>
             <button class="icon-btn notif-btn" aria-label="Notifikasi">
@@ -39,7 +39,7 @@
         <!-- Hero -->
             <section class="hero" style="background-image: url('{{ asset('images/bg-landing-padi.png') }}')">
             <div class="hero-text">
-                <h1>POKTAN<br>PADI</h1>
+                <h1>SISTEM INFORMASI KEMITRAAN TANI &<br>DAGANG KELOMPOK TANI PADI</h1>
                 <p class="hero-desc">Platform digital untuk petani dan pembeli gabah &amp; beras berkualitas.</p>
                 <div class="hero-badge">
                     <span class="hero-badge-icon">
@@ -109,7 +109,6 @@
 
         <!-- Kenapa POKTAN -->
         <section class="why-section">
-            <h2 class="section-title">Kenapa POKTAN?</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -183,7 +182,7 @@
             <div class="join-top">
                 <div>
                     <h2>Bergabung Bersama Kami</h2>
-                    <p>Ribuan petani dan pembeli sudah mempercayai POKTAN PADI.</p>
+                    <p>Ribuan petani dan pembeli sudah mempercayai Sistem Informasi Kemitraan Tani & Dagang Kelompok Tani Padi.</p>
                 </div>
                 <a href="{{ route('login') }}" class="cta-btn">
                     Daftar / Masuk
@@ -211,7 +210,7 @@
         <!-- Quote -->
         <section class="quote-section">
             <span class="quote-mark">&ldquo;</span>
-            <p>Bersama POKTAN, wujudkan pertanian yang sejahtera dan berkelanjutan.</p>
+            <p>Bersama Sistem Informasi Kemitraan Tani & Dagang Kelompok Tani Padi, wujudkan pertanian yang sejahtera dan berkelanjutan.</p>
             <div class="quote-illustration" aria-hidden="true"></div>
         </section>
 

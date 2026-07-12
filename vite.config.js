@@ -48,7 +48,7 @@ export default defineConfig({
     server: {
         host: '0.0.0.0',
         hmr: {
-            host: '192.168.1.13',
+            host: '192.168.0.196', // ipconfig diterminal, isek ip4 nye didalam terus diganti menjadi ip kalian.
         },
         watch: {
             ignored: ['**/storage/framework/views/**'],

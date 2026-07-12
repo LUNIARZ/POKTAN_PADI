@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - POKTAN Lancang Kuning</title>
+    <title>Login - Sistem Informasi Kemitraan Tani & Dagang Kelompok Tani Padi</title>
     @vite('resources/css/login.css')
 </head>
 <body>
@@ -12,7 +12,7 @@
             <div class="bingkai-logo">
                 <img class="logo-aplikasi" src="{{ asset('assets/logo-padi.png') }}" alt="Logo POKTAN Lancang Kuning">
             </div>
-            <h1>POKTAN</h1>
+            <h1>Login Sistem Informasi Kemitraan Tani & Dagang Kelompok Tani Padi</h1>
             <!---<p>Lancang Kuning</p> --->
         </section>
 

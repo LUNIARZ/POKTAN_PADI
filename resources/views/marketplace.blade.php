@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Marketplace</title>
+    <title>Produk Petani</title>
 
     @vite(['resources/css/marketplace.css', 'resources/css/navigasi-bawah.css', 'resources/js/marketplace.js', 'resources/js/maintenance.js'])
 </head>
@@ -20,7 +20,7 @@
                 </svg>
             </a>
 
-            <h1 class="judul-halaman">Marketplace</h1>
+            <h1 class="judul-halaman">Produk Saya</h1>
 
             <div class="aksi-kanan">
                 <button

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Marketplace Pembeli</title>
+    <title>Pojok Belanja Pembeli</title>
 
     @vite(['resources/css/marketplace-pembeli.css', 'resources/css/navigasi-bawah.css', 'resources/js/marketplace-pembeli.js', 'resources/js/maintenance.js'])
 </head>
@@ -13,7 +13,7 @@
     <main class="halaman-marketplace-pembeli">
         <header class="kepala-pembeli">
             <div>
-                <h1>Marketplace</h1>
+                <h1>Pojok Belanja</h1>
             </div>
 
             <a class="tombol-notifikasi" href="{{ route('pembeli.notifikasi') }}" aria-label="Buka notifikasi pembeli">

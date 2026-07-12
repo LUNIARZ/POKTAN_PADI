@@ -4,7 +4,7 @@
     $menuNavigasi = [
         ['kunci' => 'beranda', 'label' => 'Beranda', 'url' => route('dashboard')],
         ['kunci' => 'lahan', 'label' => 'Lahan', 'url' => route('lahan-saya')],
-        ['kunci' => 'marketplace', 'label' => 'Marketplace', 'url' => route('marketplace')],
+        ['kunci' => 'marketplace', 'label' => 'Produk Saya', 'url' => route('marketplace')],
         ['kunci' => 'notifikasi', 'label' => 'Notifikasi', 'url' => route('notifikasi')],
         ['kunci' => 'profile', 'label' => 'Profile', 'url' => route('profile')],
     ];

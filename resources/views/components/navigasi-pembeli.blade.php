@@ -2,7 +2,7 @@
 
 @php
     $menuNavigasi = [
-        ['kunci' => 'marketplace', 'label' => 'Marketplace', 'url' => route('pembeli.marketplace')],
+        ['kunci' => 'marketplace', 'label' => 'Pojok Belanja', 'url' => route('pembeli.marketplace')],
         ['kunci' => 'notifikasi', 'label' => 'Notifikasi', 'url' => route('pembeli.notifikasi')],
         ['kunci' => 'pesanan', 'label' => 'Pesanan', 'url' => route('pembeli.pesanan')],
         ['kunci' => 'profile', 'label' => 'Profile', 'url' => route('pembeli.profile')],

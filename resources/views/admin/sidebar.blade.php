@@ -1,7 +1,7 @@
 <aside class="sidebar col-md-3 col-lg-2 p-0 bg-white border-end">
     <div class="offcanvas-md offcanvas-start bg-white" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="sidebarMenuLabel">POKTAN</h5>
+            <h5 class="offcanvas-title" id="sidebarMenuLabel">Sistem Informasi Kemitraan Tani & Dagang Kelompok Tani Padi</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Tutup"></button>
         </div>
 

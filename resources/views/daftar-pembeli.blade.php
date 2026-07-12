@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Pembeli - POKTAN Lancang Kuning</title>
+    <title>Daftar Pembeli - Sistem Informasi Kemitraan Tani & Dagang Kelompok Tani Padi</title>
     @vite(['resources/css/login.css', 'resources/js/form-autentikasi.js'])
 </head>
 <body>
@@ -12,8 +12,8 @@
             <div class="bingkai-logo">
                 <img class="logo-aplikasi" src="{{ asset('assets/logo-padi.png') }}" alt="Logo POKTAN Lancang Kuning">
             </div>
-            <h1>POKTAN</h1>
-            <p>Lancang Kuning</p>
+            <h1>Sistem Informasi Kemitraan Tani &</h1>
+            <p>Dagang Kelompok Tani Padi</p>
         </section>
 
         <section class="kartu-login kartu-daftar" aria-labelledby="daftar-pembeli-title">

@@ -13,9 +13,9 @@
 
         <div>
 
-            <h3>POKTAN</h3>
+            <h3>Sistem Informasi Kemitraan Tani &</h3>
 
-            <span>Lancang Kuning</span>
+            <span>Dagang Kelompok Tani Padi</span>
 
         </div>
 
