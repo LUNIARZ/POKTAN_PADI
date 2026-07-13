@@ -132,16 +132,6 @@ docs/
 
 ---
 
-# 👥 Anggota Kelompok
-
-| Nama | NIM |
-|-------|-----|
-| Nama Anggota 1 | xxxxxxxxx |
-| Nama Anggota 2 | xxxxxxxxx |
-| Nama Anggota 3 | xxxxxxxxx |
-
----
-
 # 📄 Lisensi
 
 Project ini dibuat untuk keperluan akademik dan pembelajaran.
